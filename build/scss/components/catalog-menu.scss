@@ -1,0 +1,278 @@
+.header__catalog {
+    flex: 0 0 auto;
+    width: 22%;
+    border-bottom: 1px solid $color-gray;
+    border-right: 1px solid $color-gray;
+
+    display: flex;
+
+    &:hover, &:active {
+        .header__catalog-menu {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+}
+.header__catalog-button {
+    @include btn;
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: $color-accent;
+    text-align: left;
+
+    display: flex;
+    align-items: center;
+    &:before {
+        content: '';
+        display: block;
+        flex: 0 0 auto;
+        width: 2rem;
+        height: 2rem;
+        background-image: linear-gradient(to bottom, #fff 0%, #fff 40% , rgba(0,0,0,0) 40%, rgba(0,0,0,0) 100%);
+        background-position: 0 0;
+        background-size: 100% 40%;
+        background-repeat: repeat-y;
+    }
+    span {
+        display: block;
+        flex: 1 1 auto;
+        margin-left: 2rem;
+    }
+}
+.header__catalog-menu {
+    margin: 0;
+    list-style: none;
+    padding: 1.25rem 0;
+    position: absolute;
+    z-index: 1;
+    left: calc(22% - 2px);
+    right: 0;
+    background-color: #fff;
+    border-left: 1px solid $color-gray;
+    border-bottom: 1px solid $color-gray;
+    border-right: 1px solid $color-gray;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
+}
+.header__catalog-menu-item {
+    width: 30%;
+    padding: .75rem 2rem .75rem 3rem;
+    // &:not(:first-child) {
+    //     margin-top: 1.5rem;
+    // }
+    &:hover, &:active {
+        .header__catalog-menu-box {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+}
+.header__catalog-menu-link {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.4rem;
+    font-weight: 600;
+    transition: .15s;
+    &:hover, &:active {
+        color: $color-accent;
+    }
+}
+.header__catalog-menu-box {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 30%;
+    right: -1px;
+    min-height: calc(100% + 1px);
+    padding: 2rem;
+    background-color: #fff;
+    border-left: 1px solid $color-gray;
+    border-bottom: 1px solid $color-gray;
+    border-right: 1px solid $color-gray;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
+}
+.header__catalog-menu-title {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #272727;
+}
+.header__catalog-menu-list {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    > li {
+        flex: 0 0 auto;
+        width: 45%;
+        margin-top: 2rem;
+        a {
+            display: inline-block;
+            vertical-align: top;
+            color: #272727;
+            font-size: 1.4rem;
+            transition: .15s;
+            &:hover, &:active {
+                color: $color-accent;
+            }
+        }
+        ul {
+            margin: 0;
+            padding: 0 0 0 3rem;
+            list-style: none;
+            li {
+                margin-top: 1.5rem;
+                a {
+
+                    color: $color-accent;
+                    font-size: 1.3rem;
+                    transition: .15s;
+                    &:hover, &:active {
+                        color: #000;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.accordion {
+    position: relative;
+    &.active {
+        > .accordion__button {
+            //background-image: linear-gradient(#999999,#999999);
+            background-size: .8rem 2px;
+            background-position: .2rem 50%;
+            background-repeat: no-repeat;
+        }
+        > .accordion__title {
+
+        }
+    }
+    .accordion__box {
+        .accordion__button {
+            left: 0;
+        }
+        .accordion__title {
+            padding-left: 2rem;
+            transition: all .5s ease;
+        }
+        .accordion__box {
+            padding-left: 2rem;
+        }
+    }
+}
+.accordion__title {
+    padding-left: 2rem;
+    transition: all .5s ease;
+}
+.accordion__box {
+    padding-left: 2rem;
+}
+.accordion__button {
+    @include btn;
+    position: absolute;
+    top: .4em;
+    left: 0;
+    width: 1.2rem;
+    height: 1.2rem;
+    //border: 1px solid #999999;
+    border-radius: 50%;
+    color: inherit;
+    background-color: $color-accent;
+    background-image: linear-gradient(#fff,#fff),linear-gradient(#fff,#fff);
+    background-size: .8rem 2px, 2px .8rem;
+    background-position: .2rem 50%, 50% .2rem;
+    background-repeat: no-repeat, no-repeat;
+    transition: .15s;
+    &:hover, &:active {
+        // transform: scale(1.1);
+        filter: saturate(2);
+        // background-color: #000;
+        // background-image: linear-gradient($color-accent,$color-accent),linear-gradient($color-accent,$color-accent);
+    }
+}
+
+@media only screen and (max-width : 992px) {
+    .header__catalog {
+        width: 25%;
+    }
+    .header__catalog-menu {
+        left: calc(25% - 2px);
+    }
+    .header__catalog-menu-item {
+        width: 50%;
+    }
+    .header__catalog-menu-box {
+        left: 50%;
+    }
+    .header__catalog-menu-title {
+        font-size: 1.6rem;
+    }
+    .header__catalog-menu-list {
+        display: block;
+        li {
+            width: auto;
+        }
+    }
+}
+@media only screen and (max-width : 768px) {
+    .header__catalog {
+        display: block;
+        width: auto;
+    }
+    .header__catalog-menu {
+        position: relative;
+        left: -1px;
+        right: -1px;
+        width: calc(100% + 2px);
+        visibility: visible;
+        opacity: 1;
+        transition: none;
+        display: none;
+
+    }
+    .header__catalog-menu-item {
+        padding: 1rem 2rem;
+        &:hover, &:active {}
+    }
+    .header__catalog-menu-box {
+        visibility: visible;
+        opacity: 1;
+        transition: none;
+        display: none;
+        min-height: 0;
+    }
+}
+@media only screen and (max-width : 480px) {
+    .header__catalog-menu-item {
+        width: auto;
+    }
+    .header__catalog-menu-box {
+        display: none;
+        position: relative;
+        left: -1px;
+        border: none;
+        padding: 2rem 1rem;
+    }
+    .header__catalog-menu-title {
+        display: none;
+    }
+    .header__catalog-menu-list {
+        li {
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+}
