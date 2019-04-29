@@ -3,18 +3,27 @@ document.addEventListener( 'DOMContentLoaded', function( event ) {
     'use strict';
 
     /*******************************************************/
-    //MENU MOBILE
+    //MENUS MOBILE
     /*******************************************************/
 
     (function() {
         let windowWidth = window.innerWidth;
         const $headerCatalogMenu = $( '.header__catalog-menu' ),
-            $headerCatalogButton = $('.header__catalog-button');
+            $headerCatalogButton = $( '.header__catalog-button' ),
+            $navList = $( '.nav__list' ),
+            $navButton = $( '.nav__button' );
 
         $headerCatalogButton.click( function() {
             if ( window.innerWidth <= 768 ) {
                 $( this ).toggleClass( 'active' );
                 $headerCatalogMenu.slideToggle( 200 );
+            }
+        } );
+
+        $navButton.click( function() {
+            if ( window.innerWidth <= 768 ) {
+                $( this ).toggleClass( 'active' );
+                $navList.slideToggle( 200 );
             }
         } );
 
@@ -37,6 +46,9 @@ document.addEventListener( 'DOMContentLoaded', function( event ) {
                 windowWidth = newWindowWidth;
                 $headerCatalogButton.removeClass('active');
                 $headerCatalogMenu.removeAttr('style').find('.header__catalog-menu-item, .header__catalog-menu-box').removeAttr('style').removeClass('active');
+
+                $navButton.removeClass('active');
+                $navList.removeAttr('style');
             }
 
         } );
@@ -58,6 +70,166 @@ document.addEventListener( 'DOMContentLoaded', function( event ) {
         const $this = $( this );
         $this.closest( '.accordion' ).hasClass( 'active' ) ? $this.closest( '.accordion' ).removeClass( 'active' ).children( '.accordion__box' ).slideUp( 200 ) : $this.closest( '.accordion' ).addClass( 'active' ).children( '.accordion__box' ).slideDown( 200 ).end().siblings().removeClass( 'active' ).children( '.accordion__box' ).slideUp( 200 );
     } );
+
+    /*******************************************************/
+    //TITLES SLIDER
+    /*******************************************************/
+    $( '.titles' ).addClass( 'owl-carousel' ).owlCarousel( {
+        loop: true,
+        items: 1,
+        nav: true,
+        dots: false,
+        navText: '',
+        autoplayTimeout: 5000,
+        autoplay: true,
+        smartSpeed: 600,
+        onInitialize: function( event ) {
+
+            $( event.target ).after( '<div class="titles-dots"></div>' );
+
+            $( event.target ).find( '.titles__item' ).each( function() {
+
+                $( event.target ).next( '.titles-dots' ).append( $( '<div class="titles-dots__item"></div>' ).text(   $( this ).find( '.titles__item-text' ).text() ) );
+            } );
+
+            $( event.target ).next( '.titles-dots' ).addClass( 'owl-carousel' ).owlCarousel( {
+                loop: true,
+                items: 4,
+                nav: true,
+                dots: false,
+                navText: '',
+                smartSpeed: 600,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 2
+                    },
+                    481: {
+                        items: 3
+                    },
+                    769: {
+                        items: 3
+                    },
+                    993: {
+                        items: 4
+                    },
+                },
+                onTranslate: function( event ) {
+
+                    if ( ! $( event.target ).hasClass( 'listener-translate-event' ) ) {
+
+                        $( event.target ).prev( '.titles' ).addClass( 'listener-translate-event' ).trigger( 'to.owl.carousel', event.item.index + (event.item.count - ( $( event.target ).find( '.owl-item.cloned' ).length / 2 ) ) )
+                    } else {
+                        $( event.target ).removeClass( 'listener-translate-event' );
+                    }
+                },
+            } );
+        },
+        onTranslate: function( event ) {
+
+            if ( ! $( event.target ).hasClass( 'listener-translate-event' ) ) {
+
+                $( event.target ).next( '.titles-dots' ).addClass( 'listener-translate-event' ).trigger( 'to.owl.carousel', event.item.index + (event.item.count - ( $( event.target ).find( '.owl-item.cloned' ).length / 2 ) ) );
+            } else {
+                $( event.target ).removeClass( 'listener-translate-event' );
+            }
+        },
+    } );
+
+    /*******************************************************/
+    //ADVANTAGES
+    /*******************************************************/
+    $( '.advantages' ).addClass( 'tabs' ).each( function() {
+        $( this ).prepend('<div class="advantages__buttons tabs__buttons"></div>')
+        $( this ).find( '.advantages__item-title' ).addClass( 'tabs__button' ).appendTo( '.tabs__buttons' );
+        $( this ).find( '.advantages__item' ).addClass( 'tabs__section' ).not( ':first' );
+    } );
+
+    /*******************************************************/
+    //TABS
+    /*******************************************************/
+    $('.tabs').each( function() {
+        $( this ).find( '.tabs__button' ).first().addClass( 'active' );
+        $( this ).find( '.tabs__section' ).not( ':first' ).hide();
+        $( this ).find( '.tabs__buttons' ).on('click', '.tabs__button:not( .active )', function() {
+            $( this ).addClass( 'active' ).siblings().removeClass( 'active' ).closest( '.tabs' ).find( '.tabs__section' ).slideUp(300).eq( $( this ).index() ).slideDown( 300 );
+        } );
+    } );
+
+    /*******************************************************/
+    //READ MORE
+    /*******************************************************/
+    // (function() {
+    //     const $readMore = $( '.read-more' );
+    //
+    //     $readMore.each(function() {
+    //         var $this = $( this ),
+    //             $thisHeight = $this.height();
+    //         if( $thisHeight >= 82 ) {
+    //             $this.css( {
+    //                 'max-height' : '82px'
+    //             } ).after( '<button type="button" class="read-more-button hide">Раскрыть полностью</button>' );
+    //         }
+    //     });
+    //
+    //     $readMore.next( '.read-more-button' ).on( 'click', function() {
+    //         var $this = $( this );
+    //         if ( $this.hasClass( 'hide' ) ) {
+    //             $this.removeClass( 'hide' ).prev( $readMore );
+    //             var $thisTextHeight = $this.prev( $readMore ).removeAttr( 'style' ).height();
+    //             $this.html( 'Скрыть' ).prev( $readMore ).css( {
+    //                 'max-height' : '82px'
+    //             } ).animate( {
+    //                 'max-height' : $thisTextHeight + 'px'
+    //             }, 300);
+    //         } else {
+    //             $this.addClass('hide').html( 'Раскрыть полностью' ).prev( $readMore ).animate({
+    //                 'max-height' : '82px'
+    //             }, 300);
+    //         }
+    //     });
+    //
+    // } () );
+
+
+    (function() {
+        const $readMore = $( '.read-more' );
+
+        $readMore.each( function() {
+            const $this = $( this ),
+                $thisHeight = $this.height(),
+                $thisMaxHeight = $this.attr( 'data-max-height' );
+
+            if ( $thisHeight >= $thisMaxHeight ) {
+
+                $this.css( {
+                    'max-height' : $thisMaxHeight + 'px'
+                } ).after( '<button type="button" class="read-more-button hide">Читать полностью</button>' );
+            }
+        });
+
+        $readMore.next( '.read-more-button' ).on( 'click', function() {
+            const $this = $( this ),
+                $thisMaxHeight = $this.prev( $readMore ).attr( 'data-max-height' );
+
+            if ( $this.hasClass( 'hide' ) ) {
+                $this.removeClass( 'hide' ).prev( $readMore );
+                const $thisTextHeight = $this.prev( $readMore ).removeAttr( 'style' ).height();
+                $this.html( 'Скрыть' ).prev( $readMore ).css( {
+                    'max-height' : $thisMaxHeight + 'px'
+                } ).animate( {
+                    'max-height' : $thisTextHeight + 'px'
+                }, 300);
+            } else {
+                $this.addClass( 'hide' ).html( 'Читать полностью' ).prev( $readMore ).animate({
+                    'max-height' : $thisMaxHeight + 'px'
+                }, 300);
+            }
+        });
+
+    } () );
+
+
 
     /*******************************************************/
     //MENU
@@ -246,10 +418,6 @@ document.addEventListener( 'DOMContentLoaded', function( event ) {
     //--------------------------------------------------------------
     //Табы
     //--------------------------------------------------------------
-    // $('.tabs__buttons button').first().addClass('active');
-    // $(".tabs__item").not(":first").hide();
-    // $('.tabs__buttons').on('click', 'button:not(.active)', function() {
-    //     $(this).addClass('active').siblings().removeClass('active').closest('.tabs').find('.tabs__item').hide().eq($(this).index()).fadeIn(300);
-    // });
+
 
 });

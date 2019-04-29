@@ -69,9 +69,11 @@ body {
 .container {
 	max-width: calc( 1160px + 8% );
 	padding: 0 4%;
-	// max-width: 1190px;
-	// padding: 0 15px;
 	margin: 0 auto;
+
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
 }
 .clearfix:after {
 	content: '';
@@ -79,6 +81,67 @@ body {
 	clear: both;
 }
 
+.main {
+	flex: 0 0 auto;
+	width: calc(78% - 3rem);
+	margin-left: 3rem;
+}
+
+.section {
+	margin-top: 4rem;
+}
+
+.head {
+	display: flex;
+	align-items: flex-start;
+}
+.head__title {
+	flex: 1 1 auto;
+}
+.head__link {
+	display: inline-block;
+	text-decoration: none;
+	color: $color-accent;
+	flex: 0 0 auto;
+	margin: .5rem 0 0 3rem;
+	font-size: 1.4rem;
+	font-weight: 400;
+	background-image: linear-gradient($color-accent,$color-accent);
+	background-position: 0 100%;
+	background-size: 100% 1px;
+	background-repeat: no-repeat;
+	transition: .15s;
+	&:hover, &:active {
+		color: #fff;
+		background-size: 100% 100%;
+	}
+}
+
+.read-more {
+	overflow-y: hidden;
+}
+.read-more-button {
+	@include btn;
+	margin-top: 2rem;
+	font-size: 1.4rem;
+	color: $color-accent;
+	border-bottom: 1px dotted currentColor;
+    background-image: linear-gradient($color-accent,$color-accent);
+    background-position: 0 100%;
+    background-size: 100% 0;
+    background-repeat: no-repeat;
+    transition: .15s;
+    &:hover, &:active {
+        color: #fff;
+        background-size: 100% 100%;
+    }
+}
+.title {
+	margin: 0;
+	font-size: 2.2rem;
+	font-weight: 700;
+	color: #272727;
+}
 .text {
 	&:not( :first-child ) {
 		margin-top: 6rem;
@@ -208,15 +271,78 @@ body {
     }
 }
 
+@media only screen and (max-width : 1190px) {
+
+}
+
+@media only screen and (max-width : 992px) {
+
+    .main {
+    	width: calc(75% - 3rem);
+    }
+
+}
+
+@media only screen and (max-width : 768px) {
+
+    .main {
+    	width: 100%;
+        margin-left: 0;
+    }
+}
+
+@media only screen and (max-width : 640px) {
+	.head {
+		display: block;
+	}
+	.head__link {
+		margin: 1rem 0 0 0;
+	}
+}
+
+@media only screen and (max-width : 480px) {
+
+}
+
+@media only screen and (max-width : 360px) {
+
+}
+
+
 //Custom Styles Here
 @import 'components/header.scss';
 @import 'components/nav.scss';
 @import 'components/catalog-menu.scss';
-
-
+@import 'components/titles.scss';
+@import 'components/advantages.scss';
 //ALWAYS END
 
 //Load Libs
-//@import 'app/libs/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css';
+@import 'app/libs/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min';
 //@import 'app/libs/magnific-popup/dist/magnific-popup.css';
 //@import 'build/scss/components/magnific-popup.scss';
+
+
+@media only screen and (max-width : 1190px) {
+
+}
+
+@media only screen and (max-width : 992px) {
+
+}
+
+@media only screen and (max-width : 768px) {
+
+}
+
+@media only screen and (max-width : 640px) {
+
+}
+
+@media only screen and (max-width : 480px) {
+
+}
+
+@media only screen and (max-width : 360px) {
+
+}

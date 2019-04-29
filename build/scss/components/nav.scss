@@ -1,14 +1,83 @@
+
+
+.nav__button {
+    @include btn;
+
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #3a3a3a;
+    background-color: $color-gray;
+    text-align: left;
+
+    display: none;
+    align-items: center;
+    &:before {
+        content: '';
+        display: block;
+        flex: 0 0 auto;
+        width: 1.7rem;
+        height: 1.7rem;
+        transform: translateY(-.3em) rotate(-135deg);
+        background-image: linear-gradient(currentColor, currentColor ), linear-gradient(currentColor, currentColor );
+        background-position: 0 0, 0 0;
+        background-size: 100% .3rem, .3rem 100%;
+        background-repeat: no-repeat;
+        transition: .2s;
+    }
+    span {
+        display: block;
+        flex: 1 1 auto;
+        margin-left: 2.5rem;
+    }
+    &.active {
+        &:before {
+            transform: rotate(45deg);
+            background-position: 0 50%, 50% 0;
+        }
+    }
+
+    // &:before {
+    //     content: '';
+    //     display: block;
+    //     flex: 0 0 auto;
+    //     width: 1.9rem;
+    //     height: 1.9rem;
+    //     background-image: linear-gradient(to bottom, currentColor 0%, currentColor 40% , rgba(0,0,0,0) 40%, rgba(0,0,0,0) 100%);
+    //     background-position: 0 0;
+    //     background-size: 100% 40%;
+    //     background-repeat: repeat-y;
+    //     transition: .2s;
+    // }
+    // span {
+    //     display: block;
+    //     flex: 1 1 auto;
+    //     margin-left: 2rem;
+    // }
+    // &.active {
+    //     &:before {
+    //
+    //         background-image: linear-gradient(currentColor, currentColor), linear-gradient(currentColor, currentColor);
+    //         background-size: 100% 3px, 3px 100%;
+    //         background-position: 0 50%, 50% 0;
+    //         background-repeat: no-repeat;
+    //         transform: rotate(135deg);
+    //     }
+    // }
+}
 .nav {
     flex: 0 0 auto;
     width: 22%;
-    padding: 2rem;
+
     border-left: 1px solid $color-gray;
     border-bottom: 1px solid $color-gray;
     border-right: 1px solid $color-gray;
 }
 .nav__list {
     margin: 0;
-    padding: 0;
+    padding: 2rem;
     list-style: none;
 }
 .nav__item {
@@ -61,6 +130,12 @@
 @media only screen and (max-width : 768px) {
     .nav {
         width: 100%;
+    }
+    .nav__button {
+        display: flex;
+    }
+    .nav__list {
+        display: none;
     }
 }
 
