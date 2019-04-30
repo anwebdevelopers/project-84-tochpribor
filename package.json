@@ -18,5 +18,8 @@
     "gulp-uglify": "^3.0.2",
     "gulp-util": "^3.0.8",
     "node-bourbon": "^4.2.8"
+  },
+  "dependencies": {
+    "node": "^12.1.0"
   }
 }

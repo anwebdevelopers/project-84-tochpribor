@@ -1,0 +1,120 @@
+.review {
+    margin-top: 3rem;
+
+    display: flex;
+}
+.review__img {
+    margin: 0;
+    flex: 0 0 auto;
+    width: 28%;
+    img {
+        max-width: 100%;
+        width: auto;
+        height: auto;
+    }
+}
+.review__content {
+    flex: 0 0 auto;
+    width: 68%;
+    margin-left: 4%;
+}
+.review__head {
+    display: flex;
+}
+.review__heading {
+    order: -1;
+    flex: 0 0 auto;
+    width: 65%;
+}
+.review__date {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #535353;
+}
+.review__title {
+    margin-top: 1rem;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #272727;
+}
+.review__logo {
+    flex:  0 0 auto;
+    width: 30%;
+    margin: 0 0 0 5%;
+    img {
+        max-width: 100%;
+        width: auto;
+        height: auto;
+    }
+}
+.review__text {
+    margin-top: 2rem;
+    *:first-child {
+        margin-top: 0;
+    }
+    *:last-child {
+        margin-bottom: 0;
+    }
+}
+.review__link {
+    margin-top: 2rem;
+    a {
+        text-decoration: none;
+        color: $color-accent;
+        font-size: 1.4rem;
+    	font-weight: 400;
+    	background-image: linear-gradient($color-accent,$color-accent);
+    	background-position: 0 100%;
+    	background-size: 100% 1px;
+    	background-repeat: no-repeat;
+    	transition: .15s;
+    	&:hover, &:active {
+    		color: #fff;
+    		background-size: 100% 100%;
+    	}
+    }
+}
+
+@media only screen and (max-width : 1190px) {
+
+}
+
+@media only screen and (max-width : 992px) {
+
+}
+
+@media only screen and (max-width : 768px) {
+
+}
+
+@media only screen and (max-width : 640px) {
+    .review__head {
+        display: block;
+    }
+    .review__heading {
+        width: auto;
+        margin-top: 2rem;
+    }
+    .review__logo {
+        width: auto;
+        margin: 0;
+    }
+}
+
+@media only screen and (max-width : 480px) {
+    .review {
+        display: block;
+    }
+    .review__img {
+        width: auto;
+    }
+    .review__content {
+        width: auto;
+        margin-left: 0;
+        margin-top: 3rem;
+    }
+}
+
+@media only screen and (max-width : 360px) {
+
+}

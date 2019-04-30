@@ -1,0 +1,219 @@
+.footer {
+    flex: 0 0 auto;
+    width: calc(100% + 4rem);
+    margin: 10rem -2rem 0 -2rem;
+    color: #fff;
+    background-color: $color-accent;
+    position: relative;
+    z-index: 1;
+    &:before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        width: 100vw;
+        background-color: $color-accent;
+    }
+
+    display: flex;
+}
+.footer__title {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+.footer__about {
+    flex: 0 0 auto;
+    width: 26%;
+    padding: 6rem 2rem 8rem 2rem;
+}
+.footer__copy {
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+.footer__link {
+    text-decoration: none;
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    font-weight: 400;
+    a {
+        text-decoration: none;
+        color: inherit;
+        background-image: linear-gradient(#fff,#fff);
+    	background-position: 0 100%;
+    	background-size: 100% 0;
+    	background-repeat: no-repeat;
+    	transition: .15s;
+    	&:hover, &:active {
+    		color: $color-accent;
+    		background-size: 100% 100%;
+    	}
+    }
+}
+.footer__nav {
+    flex: 0 0 auto;
+    width: 18%;
+    padding: 6rem 2rem 8rem 2rem;
+    background-color: #4c86c9;
+}
+.footer__menu {
+    padding: 0;
+    list-style: none;
+    margin: 2rem 0 0 0;
+    font-size: 1.4rem;
+    font-weight: 400;
+    li {
+        margin-top: 1rem;
+        a {
+            text-decoration: none;
+            color: inherit;
+            background-image: linear-gradient(#fff,#fff);
+        	background-position: 0 100%;
+        	background-size: 100% 0;
+        	background-repeat: no-repeat;
+        	transition: .15s;
+        	&:hover, &:active {
+        		color: $color-accent;
+        		background-size: 100% 100%;
+        	}
+        }
+    }
+}
+.footer__contacts {
+    flex: 0 0 auto;
+    width: 56%;
+    padding: 6rem 2rem 8rem 2rem;
+}
+.footer__phones {
+    padding: 0;
+    list-style: none;
+    margin: 1rem 0 0 0;
+    font-size: 1.4rem;
+    font-weight: 400;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.footer__phones-item {
+    flex: 0 0 auto;
+    width: 45%;
+    margin-top: 1rem;
+
+    display: flex;
+}
+.footer__phones-title {
+    flex: 1 1 auto;
+    word-wrap: break-word;
+}
+.footer__phones-link {
+    display: inline-block;
+    vertical-align: baseline;
+    text-decoration: none;
+    color: inherit;
+    flex: 0 0 auto;
+    margin-left: .5rem;
+    transition: .3s;
+    &:hover, &:active {
+        opacity: .6;
+    }
+}
+.footer__email {
+    text-decoration: none;
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    font-weight: 400;
+    // text-align: right;
+    a {
+        text-decoration: none;
+        color: inherit;
+        background-image: linear-gradient(#fff,#fff);
+    	background-position: 0 100%;
+    	background-size: 100% 1px;
+    	background-repeat: no-repeat;
+    	transition: .15s;
+    	&:hover, &:active {
+    		color: $color-accent;
+    		background-size: 100% 100%;
+    	}
+    }
+}
+
+@media only screen and (max-width : 1190px) {
+
+}
+
+@media only screen and (max-width : 992px) {
+    .footer__about {
+        width: 33%;
+    }
+    .footer__nav {
+        width: 25%;
+    }
+    .footer__contacts {
+        width: 42%;
+    }
+    // .footer__phones-item {
+    //
+    //     display: block;
+    // }
+    // .footer__phones-link {
+    //     margin-left: 0;
+    // }
+    .footer__phones {
+        display: block;
+    }
+    .footer__phones-item {
+
+        width: auto;
+    }
+}
+
+@media only screen and (max-width : 768px) {
+    .footer {
+        flex-wrap: wrap;
+    }
+    .footer__about {
+        width: 52%;
+        padding-bottom: 0;
+    }
+    .footer__nav {
+        width: 48%;
+        padding-bottom: 0;
+        background: none;
+    }
+    .footer__contacts {
+        width: 100%;
+        // padding-top: 3rem;
+    }
+    .footer__phones {
+
+        display: flex;
+    }
+    .footer__phones-item {
+
+        width: 45%;
+    }
+}
+
+@media only screen and (max-width : 640px) {
+    .footer__phones {
+        display: block;
+    }
+    .footer__phones-item {
+
+        width: auto;
+    }
+}
+
+@media only screen and (max-width : 480px) {
+
+}
+
+@media only screen and (max-width : 360px) {
+
+}

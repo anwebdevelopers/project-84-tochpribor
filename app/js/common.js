@@ -140,57 +140,15 @@ document.addEventListener( 'DOMContentLoaded', function( event ) {
     //ADVANTAGES
     /*******************************************************/
     $( '.advantages' ).addClass( 'tabs' ).each( function() {
-        $( this ).prepend('<div class="advantages__buttons tabs__buttons"></div>')
-        $( this ).find( '.advantages__item-title' ).addClass( 'tabs__button' ).appendTo( '.tabs__buttons' );
-        $( this ).find( '.advantages__item' ).addClass( 'tabs__section' ).not( ':first' );
-    } );
-
-    /*******************************************************/
-    //TABS
-    /*******************************************************/
-    $('.tabs').each( function() {
-        $( this ).find( '.tabs__button' ).first().addClass( 'active' );
-        $( this ).find( '.tabs__section' ).not( ':first' ).hide();
-        $( this ).find( '.tabs__buttons' ).on('click', '.tabs__button:not( .active )', function() {
-            $( this ).addClass( 'active' ).siblings().removeClass( 'active' ).closest( '.tabs' ).find( '.tabs__section' ).slideUp(300).eq( $( this ).index() ).slideDown( 300 );
-        } );
+        const $this = $( this );
+        $this.prepend('<div class="advantages__buttons tabs__buttons"></div>')
+        $this.find( '.advantages__item-title' ).addClass( 'tabs__button' ).appendTo( $this.find( '.tabs__buttons' ) );
+        $this.find( '.advantages__item' ).addClass( 'tabs__section' ).not( ':first' );
     } );
 
     /*******************************************************/
     //READ MORE
     /*******************************************************/
-    // (function() {
-    //     const $readMore = $( '.read-more' );
-    //
-    //     $readMore.each(function() {
-    //         var $this = $( this ),
-    //             $thisHeight = $this.height();
-    //         if( $thisHeight >= 82 ) {
-    //             $this.css( {
-    //                 'max-height' : '82px'
-    //             } ).after( '<button type="button" class="read-more-button hide">Раскрыть полностью</button>' );
-    //         }
-    //     });
-    //
-    //     $readMore.next( '.read-more-button' ).on( 'click', function() {
-    //         var $this = $( this );
-    //         if ( $this.hasClass( 'hide' ) ) {
-    //             $this.removeClass( 'hide' ).prev( $readMore );
-    //             var $thisTextHeight = $this.prev( $readMore ).removeAttr( 'style' ).height();
-    //             $this.html( 'Скрыть' ).prev( $readMore ).css( {
-    //                 'max-height' : '82px'
-    //             } ).animate( {
-    //                 'max-height' : $thisTextHeight + 'px'
-    //             }, 300);
-    //         } else {
-    //             $this.addClass('hide').html( 'Раскрыть полностью' ).prev( $readMore ).animate({
-    //                 'max-height' : '82px'
-    //             }, 300);
-    //         }
-    //     });
-    //
-    // } () );
-
 
     (function() {
         const $readMore = $( '.read-more' );
@@ -229,7 +187,74 @@ document.addEventListener( 'DOMContentLoaded', function( event ) {
 
     } () );
 
+    /*******************************************************/
+    //HOME GOODS
+    /*******************************************************/
+    $( '.home-goods' ).addClass( 'tabs' ).each( function() {
+        const $this = $( this );
+        $this.prepend('<div class="home-goods__buttons tabs__buttons"></div>');
+        $this.find( '.home-goods__title' ).addClass( 'tabs__button' ).appendTo( $this.find( '.tabs__buttons' ) );
+        $this.find( '.home-goods__section' ).addClass( 'tabs__section' ).not( ':first' );
+    } );
 
+
+    /*******************************************************/
+    //BRANDS SLIDER
+    /*******************************************************/
+    $( '.brands' ).addClass( 'owl-carousel' ).owlCarousel( {
+        loop: true,
+        items: 6,
+        nav: true,
+        navText: '',
+        dots: false,
+        autoplayTimeout: 5000,
+        autoplay: true,
+        smartSpeed: 600,
+        responsiveClass: true,
+        responsive: {
+            0: {
+                items: 2
+            },
+            361: {
+                items: 3
+            },
+            481: {
+                items: 4
+            },
+            993: {
+                items: 5
+            },
+            1191: {
+                items: 6
+            }
+        },
+    } );
+
+    /*******************************************************/
+    //REVIEWS SLIDER
+    /*******************************************************/
+    $( '.reviews' ).addClass( 'owl-carousel' ).owlCarousel( {
+        loop: true,
+        items: 4,
+        nav: true,
+        navText: '',
+        dots: false,
+        autoplayTimeout: 5000,
+        autoplay: true,
+        smartSpeed: 600,
+        responsiveClass: true,
+        responsive: {
+            0: {
+                items: 2
+            },
+            361: {
+                items: 3
+            },
+            641: {
+                items: 4
+            }
+        },
+    } );
 
     /*******************************************************/
     //MENU
@@ -414,10 +439,16 @@ document.addEventListener( 'DOMContentLoaded', function( event ) {
     // } );
 
 
+    /*******************************************************/
+    //TABS
+    /*******************************************************/
+    $('.tabs').each( function() {
+        const $this = $( this );
+        $this.find( '.tabs__button' ).first().addClass( 'active' );
+        $this.find( '.tabs__section' ).not( ':first' ).hide();
+        $this.find( '.tabs__buttons' ).on('click', '.tabs__button:not( .active )', function() {
+            $( this ).addClass( 'active' ).siblings().removeClass( 'active' ).closest( '.tabs' ).find( '.tabs__section' ).slideUp(300).eq( $( this ).index() ).slideDown( 300 );
+        } );
+    } );
 
-    //--------------------------------------------------------------
-    //Табы
-    //--------------------------------------------------------------
-
-
-});
+} );

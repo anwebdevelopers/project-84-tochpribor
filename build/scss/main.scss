@@ -88,7 +88,9 @@ body {
 }
 
 .section {
-	margin-top: 4rem;
+	+ .section {
+		margin-top: 8rem;
+	}
 }
 
 .head {
@@ -136,6 +138,29 @@ body {
         background-size: 100% 100%;
     }
 }
+.button {
+	@include btn;
+	padding: 1.2rem 1.8rem;
+	border-radius: .3rem;
+	font-size: 1.4rem;
+	font-weight: 400;
+	color: #fff;
+	background-color: $color-accent;
+	transition: .3s;
+	&:hover, &:active {
+        filter: saturate( 1.5 );
+    }
+	&.button_background_transparent {
+		color: $color-accent;
+		background-color: rgba(255,255,255,0);
+		border: 1px solid $color-accent;
+		&:hover, &:active {
+			color: #fff;
+	        background-color: $color-accent;
+	    }
+	}
+}
+
 .title {
 	margin: 0;
 	font-size: 2.2rem;
@@ -315,6 +340,13 @@ body {
 @import 'components/catalog-menu.scss';
 @import 'components/titles.scss';
 @import 'components/advantages.scss';
+@import 'components/goods.scss';
+@import 'components/brands.scss';
+@import 'components/review.scss';
+@import 'components/reviews.scss';
+@import 'components/footer.scss';
+
+
 //ALWAYS END
 
 //Load Libs
