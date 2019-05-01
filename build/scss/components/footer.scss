@@ -1,7 +1,7 @@
 .footer {
     flex: 0 0 auto;
     width: calc(100% + 4rem);
-    margin: 10rem -2rem 0 -2rem;
+    margin: 4rem -2rem 0 -2rem;
     color: #fff;
     background-color: $color-accent;
     position: relative;
@@ -19,6 +19,7 @@
     }
 
     display: flex;
+    flex-direction: row-reverse;
 }
 .footer__title {
     margin: 0;
@@ -175,20 +176,21 @@
 
 @media only screen and (max-width : 768px) {
     .footer {
+        margin-top: 4rem;
         flex-wrap: wrap;
     }
     .footer__about {
         width: 52%;
-        padding-bottom: 0;
+
     }
     .footer__nav {
         width: 48%;
-        padding-bottom: 0;
+        // padding-bottom: 0;
         background: none;
     }
     .footer__contacts {
         width: 100%;
-        // padding-top: 3rem;
+        padding-bottom: 0;
     }
     .footer__phones {
 
@@ -211,7 +213,22 @@
 }
 
 @media only screen and (max-width : 480px) {
+    .footer {
+        display: block;
+    }
 
+    .footer__about {
+        width: auto;
+        text-align: center;
+    }
+    .footer__nav {
+        width: auto;
+        padding-bottom: 0;
+        text-align: center;
+    }
+    .footer__contacts {
+        width: auto;
+    }
 }
 
 @media only screen and (max-width : 360px) {

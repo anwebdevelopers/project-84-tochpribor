@@ -1,5 +1,7 @@
 .titles {
+    margin-right: -1rem;
     &.owl-carousel {
+        width: calc(100% + 1rem);
         .owl-nav {
             position: absolute;
             left: 0;
@@ -109,9 +111,11 @@
     }
 }
 .titles-dots {
-    margin-top: 1px;
+    margin: 1px -1rem 0 0;
+
     background-color: #ececed;
     &.owl-carousel {
+        width: calc(100% + 1rem);
         padding-right: 6rem;
         .owl-stage {
             display: flex;
@@ -187,7 +191,18 @@
 }
 
 @media only screen and (max-width : 768px) {
-
+    .titles-dots {
+        margin-right: 0;
+        &.owl-carousel {
+            width: 100%;
+        }
+    }
+    .titles {
+        margin-right: 0;
+        &.owl-carousel {
+            width: 100%;
+        }
+    }
 }
 
 @media only screen and (max-width : 640px) {
