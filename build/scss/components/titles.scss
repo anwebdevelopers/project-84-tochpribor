@@ -123,6 +123,7 @@
                 flex: 0 0 auto;
 
                 display: flex;
+                cursor: pointer;
                 &:not(.active) + .owl-item.active {
                     .titles-dots__item {
                         background-size: 100% .6rem;

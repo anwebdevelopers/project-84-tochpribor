@@ -114,6 +114,12 @@ document.addEventListener( 'DOMContentLoaded', function( event ) {
                         items: 4
                     },
                 },
+                onInitialize: function( event ) {
+                    
+                    $( event.target ).on( 'click', '.owl-item', function() {
+                        $( event.target ).trigger( 'to.owl.carousel', $( this ).closest( '.owl-item' ).index() - ( $( event.target ).find( '.owl-item.cloned' ).length / 2 ) );
+                    } );
+                },
                 onTranslate: function( event ) {
 
                     if ( ! $( event.target ).hasClass( 'listener-translate-event' ) ) {
@@ -261,6 +267,84 @@ document.addEventListener( 'DOMContentLoaded', function( event ) {
     /*******************************************************/
     $( '.scroll' ).click( function() {
         $( 'html,body' ).animate( { scrollTop : 0 }, 600 );
+    } );
+
+    //*********************************************************//
+    //MLTIPLE RANGE SLIDER
+    //*********************************************************//
+    ( function() {
+
+        const sliders = document.querySelectorAll( '.input-range-multiple' );
+
+        for ( let i = 0, slider; slider = sliders[ i ]; i++ ) {
+
+            const sliderInput = slider.querySelectorAll( 'input' );
+
+            const sliderElem = document.createElement( 'div' );
+            sliderElem.className = 'noUi';
+
+            slider.appendChild( sliderElem );
+
+            noUiSlider.create( sliderElem, {
+                start: [ sliderInput[ 0 ].value, sliderInput[ 1 ].value ],
+                connect: true,
+                range: {
+                    'min': + sliderInput[ 0 ].getAttribute( 'min' ),
+                    'max': + sliderInput[ 0 ].getAttribute( 'max' )
+                },
+                step:  + sliderInput[ 0 ].getAttribute( 'step' ),
+            } );
+
+            sliderElem.noUiSlider.on( 'update', function ( values, handle ) {
+                sliderInput[ handle ].value = parseInt( values[ handle ] );
+            } );
+
+            for ( let i = 0; i < sliderInput.length ; i++ ) {
+                sliderInput[ i ].addEventListener( 'change', function () {
+                    sliderElem.noUiSlider.set( [ sliderInput[ 0 ].value, sliderInput[ 1 ].value ] );
+                } );
+            }
+        }
+
+    } () );
+
+    /*******************************************************/
+    //HIDE FILTER ITEM
+    /*******************************************************/
+    $( '.subpart__filter-item' ).on( 'click', '.subpart__filter-button, .subpart__filter-title', function() {
+        $( this ).closest( '.subpart__filter-item' ).toggleClass( 'hide' ).find( '.subpart__filter-box').slideToggle( 300 );
+    } );
+
+    /*******************************************************/
+    //CARD SLIDER
+    /*******************************************************/
+    $( '.card__slider' ).addClass( 'owl-carousel' ).owlCarousel( {
+        loop: true,
+        items: 3,
+        nav: true,
+        navText: '',
+        dots: false,
+        autoplayTimeout: 5000,
+        autoplay: true,
+        smartSpeed: 600,
+        mouseDrag: false,
+        touchDrag: false,
+        onInitialize: function( event ) {
+
+            $( event.target ).closest( '.card__picture' ).prepend( '<div class="card__picture-image"></div>');
+
+            $( event.target ).find( '.card__slider-item' ).each( function( i ) {
+                $( event.target ).closest( '.card__picture' ).find( '.card__picture-image' ).append( $('<div class="card__picture-image-item' + ( i === 0 ? ' active' : '' ) + '"></div>').append( $( this ).find( 'img' ).clone()));
+            } );
+
+            $( event.target ).on( 'click', '.owl-item', function() {
+                $( event.target ).trigger( 'to.owl.carousel', $( this ).closest( '.owl-item' ).index() - ( $( event.target ).find( '.owl-item.cloned' ).length / 2 ) );
+            } );
+        },
+        onTranslate: function( event ) {
+
+            $( event.target ).closest( '.card__picture' ).find( '.card__picture-image-item' ).eq( event.item.index - ( $( event.target ).find( '.owl-item.cloned' ).length / 2 ) ).addClass( 'active' ).siblings().removeClass( 'active' )
+        },
     } );
 
     /*******************************************************/
