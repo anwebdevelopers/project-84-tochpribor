@@ -347,6 +347,17 @@ document.addEventListener( 'DOMContentLoaded', function( event ) {
         },
     } );
 
+
+    /*******************************************************/
+    //CARD CONTENT
+    /*******************************************************/
+    $( '.card__content' ).addClass( 'tabs' ).each( function() {
+        const $this = $( this );
+        $this.prepend('<div class="card__content-buttons tabs__buttons"></div>');
+        $this.find( '.card__content-title' ).addClass( 'tabs__button' ).appendTo( $this.find( '.tabs__buttons' ) );
+        $this.find( '.card__content-item' ).addClass( 'tabs__section' ).not( ':first' );
+    } );
+
     /*******************************************************/
     //MENU
     /*******************************************************/
