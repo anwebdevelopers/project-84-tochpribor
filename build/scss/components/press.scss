@@ -1,0 +1,111 @@
+.press {
+    margin-top: 3rem;
+}
+.press__buttons {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 2px solid $color-accent;
+    a {
+        @include btn;
+        flex: 0 1 auto;
+        margin: .5rem .5rem -1px 0;
+        &:last-child {
+            margin-right: 0;
+        }
+        padding: 1.2rem 1.8rem;
+        // border-radius: .1rem;
+        font-size: 1.4rem;
+        font-weight: 400;
+        color: $color-accent;
+        background-color: rgba(255,255,255,0);
+        border: 1px solid $color-accent;
+        transition: .3s;
+        &:hover, &:active {
+            background-color: rgba(0, 0, 0, .05);
+        }
+        &.active {
+            color: #fff;
+            background-color: $color-accent;
+        }
+    }
+}
+.press__box {
+    margin: 0 -1.5rem;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+.press__item {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    flex: 0 0 auto;
+    width: calc(25% - 3rem);
+    margin: 4rem 1.5rem 0 1.5rem;
+    transition: .3s;
+    &:hover, &:active {
+        filter: saturate(1.5);
+    }
+}
+.press__item-img {
+    margin: 0;
+    img {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+    }
+}
+.press__item-title {
+    margin: 1rem 0 0 0;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: $color-accent;
+}
+.press__item-date {
+    margin-top: .5rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #909090;
+}
+.press__item-text {
+    margin-top: 1rem;
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+.press__pagination {
+    margin-top: 6rem;
+}
+@media only screen and (max-width : 1190px) {
+
+}
+
+@media only screen and (max-width : 992px) {
+    .press__item {
+        width: calc(33.3333% - 3rem);
+    }
+}
+
+@media only screen and (max-width : 768px) {
+
+}
+
+@media only screen and (max-width : 640px) {
+
+}
+
+@media only screen and (max-width : 480px) {
+    .press__item {
+        width: calc(50% - 3rem);
+    }
+}
+
+@media only screen and (max-width : 360px) {
+    .press__box {
+        margin: 0 -.5rem;
+    }
+    .press__item {
+        width: calc(50% - 1rem);
+        margin: 4rem .5rem 0 .5rem;
+    }
+}
