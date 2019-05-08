@@ -1,17 +1,27 @@
 .goods {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -1.5rem;
+    margin-top: 4rem;
 }
 .goods__item {
     flex: 0 0 auto;
-    width: calc( 25% - 3rem );
-    margin: 5rem 1.5rem 0 1.5rem;
+    width: 25%;
+    padding: 1.5rem;
+    //margin-top: 3.5rem;
+    border: 1px solid rgba(255,255,255,0);
+    transition: .3s;
 
     display: flex;
     flex-direction: column;
 
     position: relative;
+    &:hover, &:active {
+        border-color: $color-accent;
+        .button.button_background_transparent {
+            color: #fff;
+            background-color: $color-accent;
+        }
+    }
 }
 .goods__item-link {
     display: block;
@@ -32,7 +42,7 @@
     position: absolute;
     z-index: 1;
     left: 0;
-    top: 2.4rem;
+    top: 4.2rem;
     right: 0;
     bottom: 0;
 
@@ -60,6 +70,9 @@
 .goods__item-attention {
     height: 2.5rem;
     padding: .3rem .5rem;
+    //margin-bottom: -2.5rem;
+    position: relative;
+    z-index: 1;
     border-radius: .2rem;
     font-size: 1.4rem;
     font-weight: 600;
@@ -76,12 +89,13 @@
         background-color: #ab2766;
     }
     + .goods__item-picture {
-        margin-top: 2rem;
+        margin-top: .3rem;
     }
 }
 .goods__item-picture {
     height: 0;
     padding-bottom: 100%;
+    margin-top: 2.8rem;
     position: relative;
 }
 .goods__item-img {
@@ -166,15 +180,16 @@
     // margin-left: .3rem;
     margin-top: 1.5rem;
     white-space: nowrap;
+
 }
 
 @media only screen and (max-width : 1190px) {
-    .goods {
-        margin: 0 -1rem;
-    }
+    //.goods {
+    //    margin: 4rem -1rem 0 -1rem;
+    //}
     .goods__item {
-        width: calc( 25% - 2rem );
-        margin: 5rem 1rem 0 1rem;
+        width: 25%;
+        padding: 1rem;
     }
     // .goods__item {
     //     width: calc( 33.3333% - 3rem );
@@ -184,7 +199,7 @@
 
 @media only screen and (max-width : 992px) {
     .goods__item {
-        width: calc( 33.3333% - 2rem );
+        width: 33.3333%;
     }
 }
 
@@ -198,7 +213,7 @@
 
 @media only screen and (max-width : 480px) {
     .goods__item {
-        width: calc( 50% - 2rem );
+        width: 50%;
     }
 }
 
@@ -234,6 +249,6 @@
     }
 }
 .home-goods__button {
-    margin-top: 6rem;
+    margin-top: 4rem;
     text-align: center;
 }

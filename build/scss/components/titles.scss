@@ -1,7 +1,7 @@
 .titles {
     margin-right: -2rem;
     &.owl-carousel {
-        width: calc(100% + 1rem);
+        width: calc(100% + 2rem);
         .owl-nav {
             position: absolute;
             left: 0;
@@ -111,11 +111,11 @@
     }
 }
 .titles-dots {
-    margin: 1px -1rem 0 0;
+    margin: 1px -2rem 0 0;
 
     background-color: #ececed;
     &.owl-carousel {
-        width: calc(100% + 1rem);
+        width: calc(100% + 2rem);
         padding-right: 6rem;
         .owl-stage {
             display: flex;

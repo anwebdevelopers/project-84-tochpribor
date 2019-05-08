@@ -8,33 +8,22 @@ document.addEventListener( 'DOMContentLoaded', function( event ) {
 
     (function() {
         let windowWidth = window.innerWidth;
-        const $headerCatalogMenu = $( '.header__catalog-menu' ),
-            $headerCatalogButton = $( '.header__catalog-button' ),
-            $navList = $( '.nav__list' ),
-            $navButton = $( '.nav__button' );
+        const $asideNavList = $( '.aside__nav-list' ),
+            $asideNavButton = $( '.aside__nav-button' );
 
-        $headerCatalogButton.click( function() {
+        $asideNavButton.click( function() {
             if ( window.innerWidth <= 768 ) {
                 $( this ).toggleClass( 'active' );
-                $headerCatalogMenu.slideToggle( 200 );
+                $asideNavList.slideToggle( 200 );
             }
         } );
 
-        $navButton.click( function() {
+        $( '.mobile-nav' ).find( '.mobile-nav-link' ).click( function( e ) {
             if ( window.innerWidth <= 768 ) {
-                $( this ).toggleClass( 'active' );
-                $navList.slideToggle( 200 );
-            }
-        } );
-
-        $headerCatalogMenu.find('.header__catalog-menu-link').click( function( e ) {
-            if ( window.innerWidth <= 768 ) {
-                    const $headerCatalogMenuBox = $(this).next('.header__catalog-menu-box'),
-                    $headerCatalogMenuItem = $(this).closest('.header__catalog-menu-item');
-                if ( ! $headerCatalogMenuItem.hasClass('active') ) {
+                if ( ! $( this ).closest( '.mobile-nav-item' ).hasClass( 'active' ) ) {
                     e.preventDefault();
-                    $headerCatalogMenuBox.slideDown(200);
-                    $headerCatalogMenuItem.addClass('active').siblings().removeClass('active').find('.header__catalog-menu-box').slideUp(200);
+                    $( this ).next( '.mobile-nav-box' ).slideDown( 200 );
+                    $( this ).closest( '.mobile-nav-item' ).addClass( 'active' ).siblings().removeClass( 'active' ).find( '.mobile-nav-item' ).removeClass( 'active' ).end().find( '.mobile-nav-box' ).slideUp( 200 );
                 }
             }
         });
@@ -44,16 +33,18 @@ document.addEventListener( 'DOMContentLoaded', function( event ) {
 
             if ( windowWidth !== newWindowWidth ) {
                 windowWidth = newWindowWidth;
-                $headerCatalogButton.removeClass('active');
-                $headerCatalogMenu.removeAttr('style').find('.header__catalog-menu-item, .header__catalog-menu-box').removeAttr('style').removeClass('active');
+                $asideNavButton.removeClass( 'active' );
+                $( '.mobile-nav' ).removeAttr( 'style' ).find( '.mobile-nav-item, .mobile-nav-box' ).removeAttr( 'style').removeClass( 'active' );
 
-                $navButton.removeClass('active');
-                $navList.removeAttr('style');
+                $asideNavButton.removeClass( 'active' );
+                $asideNavList.removeAttr( 'style' );
             }
 
         } );
 
     } () );
+
+
 
 
     /*******************************************************/
@@ -147,7 +138,7 @@ document.addEventListener( 'DOMContentLoaded', function( event ) {
     /*******************************************************/
     $( '.advantages' ).addClass( 'tabs' ).each( function() {
         const $this = $( this );
-        $this.prepend('<div class="advantages__buttons tabs__buttons"></div>')
+        $this.prepend('<div class="advantages__buttons tabs__buttons"></div>');
         $this.find( '.advantages__item-title' ).addClass( 'tabs__button' ).appendTo( $this.find( '.tabs__buttons' ) );
         $this.find( '.advantages__item' ).addClass( 'tabs__section' ).not( ':first' );
     } );
@@ -236,6 +227,8 @@ document.addEventListener( 'DOMContentLoaded', function( event ) {
         },
     } );
 
+
+
     /*******************************************************/
     //REVIEWS SLIDER
     /*******************************************************/
@@ -259,6 +252,18 @@ document.addEventListener( 'DOMContentLoaded', function( event ) {
             641: {
                 items: 4
             }
+        },
+        onInitialize: function( event ) {
+
+            $( '.review' ).find( '.review__item' ).not( ':first' ).hide();
+
+            $( event.target ).find( '.reviews__item' ).each( function () {
+                $( this ).attr( 'data-index', $( this ).index() );
+            } );
+
+            $( event.target ).on( 'click', '.owl-item', function() {
+                $( '.review' ).find( '.review__item' ).eq( $( this ).find( '.reviews__item' ).attr( 'data-index' ) ).slideDown( 300 ).siblings().slideUp( 300 );
+            } );
         },
     } );
 
@@ -369,6 +374,21 @@ document.addEventListener( 'DOMContentLoaded', function( event ) {
         $this.find( '.tabs__buttons' ).on('click', '.tabs__button:not( .active )', function() {
             $( this ).addClass( 'active' ).siblings().removeClass( 'active' ).closest( '.tabs' ).find( '.tabs__section' ).slideUp(300).eq( $( this ).index() ).slideDown( 300 );
         } );
+    } );
+
+    /*******************************************************/
+    //CARD SPECIALIST
+    /*******************************************************/
+    $( '.card__specialist-item' ).each( function () {
+        const $this = $( this );
+
+        setTimeout( function () {
+            $this.addClass( 'active' );
+        }, 5000 );
+
+        $this.find( '.card__specialist-box' ).append( '<button class="card__specialist-button"></button>' );
+    } ).on( 'click', '.card__specialist-button', function () {
+        $( this ).closest( '.card__specialist-item' ).toggleClass( 'active' );
     } );
 
 } );

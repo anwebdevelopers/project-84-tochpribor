@@ -1,9 +1,9 @@
-.review {
+.review__item {
     margin-top: 3rem;
 
     display: flex;
 }
-.review__img {
+.review__item-img {
     margin: 0;
     flex: 0 0 auto;
     width: 28%;
@@ -13,31 +13,31 @@
         height: auto;
     }
 }
-.review__content {
+.review__item-content {
     flex: 0 0 auto;
     width: 68%;
     margin-left: 4%;
 }
-.review__head {
+.review__item-head {
     display: flex;
 }
-.review__heading {
+.review__item-heading {
     order: -1;
     flex: 0 0 auto;
     width: 65%;
 }
-.review__date {
+.review__item-date {
     font-size: 1.3rem;
     font-weight: 400;
     color: #535353;
 }
-.review__title {
+.review__item-title {
     margin-top: 1rem;
     font-size: 2.4rem;
     font-weight: 700;
     color: #272727;
 }
-.review__logo {
+.review__item-logo {
     flex:  0 0 auto;
     width: 30%;
     margin: 0 0 0 5%;
@@ -47,7 +47,7 @@
         height: auto;
     }
 }
-.review__text {
+.review__item-text {
     margin-top: 2rem;
     *:first-child {
         margin-top: 0;
@@ -56,24 +56,24 @@
         margin-bottom: 0;
     }
 }
-.review__link {
-    margin-top: 2rem;
-    a {
-        text-decoration: none;
-        color: $color-accent;
-        font-size: 1.4rem;
-    	font-weight: 400;
-    	background-image: linear-gradient($color-accent,$color-accent);
-    	background-position: 0 100%;
-    	background-size: 100% 1px;
-    	background-repeat: no-repeat;
-    	transition: .15s;
-    	&:hover, &:active {
-    		color: #fff;
-    		background-size: 100% 100%;
-    	}
-    }
-}
+//.review__item-link {
+//    margin-top: 2rem;
+//    a {
+//        text-decoration: none;
+//        color: $color-accent;
+//        font-size: 1.4rem;
+//    	font-weight: 400;
+//    	background-image: linear-gradient($color-accent,$color-accent);
+//    	background-position: 0 100%;
+//    	background-size: 100% 1px;
+//    	background-repeat: no-repeat;
+//    	transition: .15s;
+//    	&:hover, &:active {
+//    		color: #fff;
+//    		background-size: 100% 100%;
+//    	}
+//    }
+//}
 
 @media only screen and (max-width : 1190px) {
 
@@ -88,27 +88,27 @@
 }
 
 @media only screen and (max-width : 640px) {
-    .review__head {
+    .review__item-head {
         display: block;
     }
-    .review__heading {
+    .review__item-heading {
         width: auto;
         margin-top: 2rem;
     }
-    .review__logo {
+    .review__item-logo {
         width: auto;
         margin: 0;
     }
 }
 
 @media only screen and (max-width : 480px) {
-    .review {
+    .review__item {
         display: block;
     }
-    .review__img {
+    .review__item-img {
         width: auto;
     }
-    .review__content {
+    .review__item-content {
         width: auto;
         margin-left: 0;
         margin-top: 3rem;

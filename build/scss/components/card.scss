@@ -172,7 +172,7 @@
     position: relative;
     height: 0;
     padding-bottom: 100%;
-    border: 1px solid #e6e6e6;
+    //border: 1px solid #e6e6e6;
 
 }
 .card__picture-image-item {
@@ -346,37 +346,39 @@
     margin-left: 2%;
 }
 .card__specialist-item {
-    &:not( :first-child ) {
-        margin-top: 3rem;
-    }
+    position: sticky;
+    left: 0;
+    top: 0;
+    right: 0;
 
     color: #fff;
     //overflow: hidden;
 
-    &:hover,&:active {
+    &.active {
         //overflow: visible;
-        .card__specialist-item-box {
+        .card__specialist-box {
             width: 49rem;
-            &:before {
-                transform: rotate(135deg);
-            }
+
         }
-        .card__specialist-item-inner {
+        .card__specialist-button {
+            transform: rotate(135deg);
+        }
+        .card__specialist-inner {
             //transform: translateX(0);
         }
     }
     //display: flex;
-    position: relative;
+    //position: relative;
     z-index: 1;
 }
-.card__specialist-item-head {
+.card__specialist-head {
     flex: 0 0 auto;
     width: 100%;
     padding: 2rem;
     text-align: center;
     background-color: $color-accent;
 }
-.card__specialist-item-img {
+.card__specialist-img {
     margin: 0;
     img {
         max-width: 100%;
@@ -386,19 +388,19 @@
     }
 }
 
-.card__specialist-item-name {
+.card__specialist-name {
     margin-top: .5rem;
     font-size: 1.8rem;
     font-weight: 700;
     word-wrap: break-word;
 }
-.card__specialist-item-position {
+.card__specialist-position {
     margin-top: .5rem;
     font-size: 1.3rem;
     font-weight: 400;
     word-wrap: break-word;
 }
-.card__specialist-item-box {
+.card__specialist-box {
     //order: -1;
     //flex: 0 0 auto;
     //width: 27rem;
@@ -414,22 +416,23 @@
     overflow: hidden;
 
     transition: .3s;
-    &:before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: .8rem;
-        transform: translateY(-100%) rotate(-45deg);
-        width: 1.4rem;
-        height: 1.4rem;
-        border-left: 1px solid currentColor;
-        border-top: 1px solid currentColor;
-        transition: .3s;
-    }
 
     display: flex;
 }
-.card__specialist-item-inner {
+.card__specialist-button {
+    @include btn;
+    position: absolute;
+    top: 50%;
+    left: .8rem;
+    transform: translateY(-100%) rotate(-45deg);
+    width: 1.4rem;
+    height: 1.4rem;
+    color: currentColor;
+    border-left: 1px solid currentColor;
+    border-top: 1px solid currentColor;
+    transition: .3s;
+}
+.card__specialist-inner {
     //position: absolute;
     //left: 0;
     //top: 0;
@@ -452,30 +455,30 @@
     align-items: flex-start;
 }
 
-.card__specialist-item-title {
+.card__specialist-title {
     font-size: 1.8rem;
     line-height: 1.2;
     font-weight: 700;
 
 }
-.card__specialist-item-text {
+.card__specialist-text {
     margin-top: 2rem;
     font-size: 1.4rem;
     font-weight: 400;
 }
-.card__specialist-item-phone {
+.card__specialist-phone {
     text-decoration: none;
     color: inherit;
     margin-top: 2rem;
     display: flex;
     align-items: center;
     &:hover,&:active {
-        .card__specialist-item-phone-text {
+        .card__specialist-phone-text {
             opacity: .5;
         }
     }
 }
-.card__specialist-item-phone-icon {
+.card__specialist-phone-icon {
     flex: 0 0 auto;
     margin-right: 1.5rem;
     width: 2rem;
@@ -486,25 +489,25 @@
         height: auto;
     }
 }
-.card__specialist-item-phone-text {
+.card__specialist-phone-text {
     flex: 0 1 auto;
     font-size: 1.8rem;
     font-weight: 700;
     transition: .3s;
 }
-.card__specialist-item-link {
+.card__specialist-link {
     text-decoration: none;
     color: inherit;
     margin-top: 2rem;
     display: flex;
     align-items: center;
     &:hover,&:active {
-        .card__specialist-item-link-text {
+        .card__specialist-link-text {
             opacity: .5;
         }
     }
 }
-.card__specialist-item-link-icon {
+.card__specialist-link-icon {
     flex: 0 0 auto;
     margin-right: 1.5rem;
     width: 2rem;
@@ -515,7 +518,7 @@
         height: auto;
     }
 }
-.card__specialist-item-link-text {
+.card__specialist-link-text {
     flex: 0 1 auto;
     font-size: 1.3rem;
     font-weight: 400;
@@ -589,11 +592,10 @@
     .card__specialist {
         width: 32%;
     }
-    .card__specialist-item:hover .card__specialist-item-box,
-    .card__specialist-item:active .card__specialist-item-box {
+    .card__specialist-item.active .card__specialist-box {
         width: 35.5rem;
     }
-    .card__specialist-item-inner {
+    .card__specialist-inner {
         width: 29.5rem;
     }
 }
@@ -630,14 +632,15 @@
 
     }
     .card__specialist-item {
+        position: relative;
         display: flex;
         align-items: stretch;
     }
-    .card__specialist-item-head {
+    .card__specialist-head {
         width: 35%;
         flex: 0 0 auto;
     }
-    .card__specialist-item-box {
+    .card__specialist-box {
         position: relative;
         z-index: 0;
         left: auto;
@@ -651,11 +654,13 @@
             display: none;
         }
     }
-    .card__specialist-item:hover .card__specialist-item-box,
-    .card__specialist-item:active .card__specialist-item-box {
+    .card__specialist-button {
+        display: none;
+    }
+    .card__specialist-item.active .card__specialist-box {
         width: 65%;
     }
-    .card__specialist-item-inner {
+    .card__specialist-inner {
         width: auto;
         margin: 0;
         padding: 2rem 2rem 2rem 1rem;
@@ -681,24 +686,23 @@
         display: block;
         
     }
-    .card__specialist-item-head {
+    .card__specialist-head {
         width: auto;
         //display: flex;
         text-align: inherit;
     }
-    .card__specialist-item-img {
+    .card__specialist-img {
         img {
             width: auto;
         }
     }
-    .card__specialist-item-box {
+    .card__specialist-box {
         width: auto;
     }
-    .card__specialist-item:hover .card__specialist-item-box,
-    .card__specialist-item:active .card__specialist-item-box {
+    .card__specialist-item.active .card__specialist-box {
         width: auto;
     }
-    .card__specialist-item-inner {
+    .card__specialist-inner {
         padding: 2rem;
 
     }
