@@ -360,7 +360,17 @@ document.addEventListener( 'DOMContentLoaded', function( event ) {
         const $this = $( this );
         $this.prepend('<div class="card__content-buttons tabs__buttons"></div>');
         $this.find( '.card__content-title' ).addClass( 'tabs__button' ).appendTo( $this.find( '.tabs__buttons' ) );
-        $this.find( '.card__content-item' ).addClass( 'tabs__section' ).not( ':first' );
+        $this.find( '.card__content-item' ).addClass( 'tabs__section' );
+    } );
+
+    /*******************************************************/
+    //DELIVERY TABS
+    /*******************************************************/
+    $( '.delivery' ).addClass( 'tabs' ).each( function() {
+        const $this = $( this );
+        $this.find( '.delivery__buttons' ).addClass( 'tabs__buttons' ).find( '.delivery__button' ).addClass( 'tabs__button' );
+        $this.find( '.card__content-title' ).addClass( 'tabs__button' ).appendTo( $this.find( '.tabs__buttons' ) );
+        $this.find( '.delivery__item' ).addClass( 'tabs__section' );
     } );
 
 
@@ -390,5 +400,14 @@ document.addEventListener( 'DOMContentLoaded', function( event ) {
     } ).on( 'click', '.card__specialist-button', function () {
         $( this ).closest( '.card__specialist-item' ).toggleClass( 'active' );
     } );
+
+    /*******************************************************/
+    //FANCYBOX POPUP
+    /*******************************************************/
+    ( function() {
+
+        $.fancybox.defaults.autoFocus = false;
+
+    } () );
 
 } );

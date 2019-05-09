@@ -491,6 +491,7 @@ body {
 
 
 //Custom Styles Here
+@import 'components/form.scss';
 @import 'components/header.scss';
 @import 'components/aside.scss';
 @import 'components/aside-nav-menu';
@@ -501,6 +502,7 @@ body {
 @import 'components/review.scss';
 @import 'components/reviews.scss';
 @import 'components/footer.scss';
+
 
 @import 'components/catalog.scss';
 @import 'components/part.scss';
@@ -515,5 +517,6 @@ body {
 //Load Libs
 @import 'app/libs/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min';
 @import 'app/libs/noUiSlider/nouislider';
+@import 'app/libs/fancybox/dist/jquery.fancybox.scss';
 //@import 'app/libs/magnific-popup/dist/magnific-popup.css';
 //@import 'build/scss/components/magnific-popup.scss';

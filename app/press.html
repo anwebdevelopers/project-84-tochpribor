@@ -242,11 +242,11 @@
 					<div class="header__feedback">
 						<div class="header__feedback-item">
 							<div class="header__feedback-title">пн-пт с 8:00 до 17:00 (МСК)</div>
-							<a href="#" class="header__feedback-button">Заказать обратный звонок</a>
+							<a data-fancybox="callback" href="#callback" class="header__feedback-button">Заказать обратный звонок</a>
 						</div>
 						<div class="header__feedback-item">
 							<a href="mailto:mail@tochpribor.ru" class="header__feedback-link">mail@tochpribor.ru</a>
-							<a href="#" class="header__feedback-button">Написать нам</a>
+							<a data-fancybox="feedback" href="#feedback" class="header__feedback-button">Написать нам</a>
 						</div>
 					</div>
 				</div>
@@ -508,7 +508,59 @@
 		</footer>
 
 	</div>
+	<div hidden>
+		<form id="callback" class="popup form">
+			<h3 class="form__title">Обратный звонок</h3>
+			<label class="form__item input-text">
+				<div class="input-text__label">Телефон <span>*</span></div>
+				<input type="text" class="input-text__field">
+				<div class="input-text__placeholder">укажите совой телефон и мы вам перезвоним</div>
+			</label>
+			<label class="form__item input-text">
+				<div class="input-text__label">Контактное лицо <span>*</span></div>
+				<input type="text" class="input-text__field">
+				<div class="input-text__placeholder">представьтесь пожалуйста</div>
+			</label>
+			<label class="form__item input-text">
+				<div class="input-text__label">Комментарий <span>*</span></div>
+				<textarea type="text" class="input-text__field"></textarea>
+				<div class="input-text__placeholder">напишите Ваш вопрос, чтобы мы смогли оперативно предоставить нужную Вам информацию</div>
+			</label>
+			<label class="form__item input-check">
+				<input type="checkbox" checked>
+				<span>Я соглашаюсь на обработку моих персональных данных</span>
+			</label>
+			<div class="form__submit">
+				<button class="button" type="submit">Отправить</button>
+			</div>
+		</form>
+		<form id="feedback" class="popup form">
+			<h3 class="form__title">Задайте вопрос</h3>
+			<label class="form__item input-text">
+				<div class="input-text__label">Комментарий <span>*</span></div>
+				<textarea type="text" class="input-text__field"></textarea>
+				<div class="input-text__placeholder">напишите Ваш вопрос</div>
+			</label>
+			<label class="form__item input-text">
+				<div class="input-text__label">Электронная почта <span>*</span></div>
+				<input type="text" class="input-text__field">
+				<div class="input-text__placeholder">для ответа на Ваш вопрос</div>
+			</label>
+			<label class="form__item input-text">
+				<div class="input-text__label">Контактное лицо <span>*</span></div>
+				<input type="text" class="input-text__field">
+				<div class="input-text__placeholder">представьтесь пожалуйста</div>
+			</label>
 
+			<label class="form__item input-check">
+				<input type="checkbox" checked>
+				<span>Я соглашаюсь на обработку моих персональных данных</span>
+			</label>
+			<div class="form__submit">
+				<button class="button" type="submit">Отправить</button>
+			</div>
+		</form>
+	</div>
 	<!-- Load Scripts Start -->
 	<script src="js/scripts.js" defer></script>
 	<script src="js/common.js" defer></script>
